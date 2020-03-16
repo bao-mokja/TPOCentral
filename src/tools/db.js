@@ -12,4 +12,4 @@ var demandSchema = new mongoose.Schema({
 });
 
 mongoose.model( 'Demand', demandSchema );
-mongoose.connect( 'mongodb://localhost:27017/tpoCentral' );
+mongoose.connect( 'mongodb+srv://admin:admin@cluster0-kum5q.mongodb.net/test?retryWrites=true&w=majority' );
