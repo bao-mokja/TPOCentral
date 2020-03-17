@@ -173,7 +173,7 @@
                 <div class="card-body p-0">
                   <!-- Nested Row within Card Body -->
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                       <div class="p-5">
                     
                        
@@ -183,12 +183,21 @@
                             <input type="text" class="form-control form-control-user" name="demandName"  placeholder="Enter Demand Name...">
                           </div>
                           <div class="form-group">
-                            <label class="custom-label" for="demandName">Demand Description</label>
-                            <input type="text" class="form-control form-control-user" name="demandDescription" placeholder="Enter demand description">
+                            <label class="custom-label" for="demandDescription">Demand Description</label>
+                            <textarea class="form-control form-control-user" name="demandDescription" rows="3" placeholder="Enter demand description"></textarea>
                           </div>
                           <div class="form-group">
                             <label class="custom-label" for="demandCountry">Demand Country</label>
-                            <input type="text" class="form-control form-control-user" name="demandCountry" placeholder="Enter demand country">
+                            <select name="demandCountry" class="form-control"> 
+                              <option>None</option>
+                              <option>Australia</option>
+                              <option>China</option>
+                              <option>Hong Kong</option>
+                              <option>India</option>
+                              <option>Japan</option>
+                              <option>Korea</option>
+                              <option>Taiwan</option> 
+                            </select>
                           </div>
                           <div class="form-group">
                             <label class="custom-label" for="demandRequestor">Demand Requestor</label>
