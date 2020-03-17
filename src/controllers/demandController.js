@@ -23,7 +23,7 @@ exports.create = function (req, res) {
 
 // query db for all open demands
 exports.openDemands = function (req, res) {
-    Demand.find(function (err, demands, count) {
+    Demand.find({ demandStatus : "Open" } ,function (err, demands, count) {
         res.render('openDemands', {
             demands: demands
         });
@@ -32,7 +32,7 @@ exports.openDemands = function (req, res) {
 
 // query db for all accepted demands
 exports.acceptedDemands = function (req, res) {
-    Demand.find(function (err, demands, count) {
+    Demand.find({ demandStatus : "Accepted" }, function (err, demands, count) {
         res.render('acceptedDemands', {
             demands: demands
         });
