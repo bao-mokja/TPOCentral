@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var Demand = mongoose.model('Demand');
 
 exports.create = function (req, res) {
-    debug("***Adding new Demand");
     var newDemand = new Demand(
         {
             demandName: req.body.demandName,
@@ -15,7 +14,6 @@ exports.create = function (req, res) {
             demandRequestedDate: Date.now()
         }
     )
-    debug(newDemand);
     newDemand.save(function (err, newDemand, count) {
         res.redirect('/');
     });
