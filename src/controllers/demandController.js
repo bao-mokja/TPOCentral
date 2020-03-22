@@ -62,10 +62,6 @@ exports.updateDemand = function (req, res) {
         else{
             displayDemands(res,acceptedStatuses);
         }
-        //res.render('demandDetail', {
-        //    demandDetail: req.demand,
-         //   moment: moment
-        //});
     });
 };
 

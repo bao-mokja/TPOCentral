@@ -7,7 +7,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["HK", "Jaoan", "China"],
+    labels: ["HK", "Japan", "China"],
     datasets: [{
       data: [2, 1, 1],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
