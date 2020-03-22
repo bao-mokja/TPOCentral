@@ -8,7 +8,9 @@ var demandSchema = new mongoose.Schema({
     demandRequestor: String,
     demandLeader: String,
     demandStatus: String,
-    demandRequestedDate: Date
+    demandRequestedDate: Date,
+    demandTargetDate: String,
+    demandComments: String
 });
 
 mongoose.model( 'Demand', demandSchema );
