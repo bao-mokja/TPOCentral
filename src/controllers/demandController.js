@@ -3,6 +3,9 @@ const debug = require('debug')('app:demandController');
 const Demand = mongoose.model('Demand');
 const moment = require('moment');
 
+const openStatuses = ["Open", "On-going", "On-hold"] ;
+const acceptedStatuses = ["Qualified", "Pending kick off"] ;
+
 exports.create = function (req, res) {
     var newDemand = new Demand(
         {
@@ -22,22 +25,12 @@ exports.create = function (req, res) {
 
 // query db for all open demands
 exports.openDemands = function (req, res) {
-    Demand.find({ demandStatus : ["Open", "On-going", "On-hold"] } ,function (err, demands, count) {
-        res.render('openDemands', {
-            demands: demands,
-            moment: moment
-        });
-    });
+    displayDemands(res,openStatuses);
 };
 
 // query db for all accepted demands
 exports.acceptedDemands = function (req, res) {
-    Demand.find({ demandStatus : ["Qualified", "Pending kick off"]  }, function (err, demands, count) {
-        res.render('acceptedDemands', {
-            demands: demands,
-            moment: moment
-        });
-    });
+    displayDemands(res,acceptedStatuses);
 };
 
 // query db for all accepted demands
@@ -63,9 +56,24 @@ exports.updateDemand = function (req, res) {
     });
 
     req.demand.save((err)=>{
-        res.render('demandDetail', {
-            demandDetail: demand,
+        if(openStatuses.includes(req.demand.demandStatus) ){
+            displayDemands(res,openStatuses);
+        }
+        else{
+            displayDemands(res,acceptedStatuses);
+        }
+        //res.render('demandDetail', {
+        //    demandDetail: req.demand,
+         //   moment: moment
+        //});
+    });
+};
+
+function displayDemands(res, statuses) {
+    Demand.find({ demandStatus: statuses }, function (err, demands, count) {
+        res.render('demandList', {
+            demands: demands,
             moment: moment
         });
     });
-};
+}
