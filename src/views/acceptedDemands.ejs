@@ -213,7 +213,7 @@
                           <%= demand.demandStatus %>
                         </td>
                         <td>
-                          <%= demand.demandRequestedDate %>
+                          <%= moment(demandDetail.demandRequestedDate ).format( 'YYYY/MM/DD')  %>
                         </td>
                       </tr>
                     <% }); %>

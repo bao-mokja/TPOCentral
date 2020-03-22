@@ -51,6 +51,7 @@
         Demands
       </div>
 
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link" href="/demands/openDemands">
           <i class="fas fa-fw fa-folder"></i>
@@ -58,7 +59,7 @@
         </a>        
       </li>
 
-     
+      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link" href="/demands/acceptedDemands" >
           <i class="fas fa-fw fa-folder"></i>
@@ -127,7 +128,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -158,100 +159,89 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Open Demands</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Requested Country</th>
-                      <th>Requestor</th>
-                      <th>Demand Leader</th>
-                      <th>Status</th>
-                      <th>Requested Date</th>
-                      <th>Target Date</th>
-                      <th>Comments</th>
-                      <th>View Demand</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Requested Country</th>
-                      <th>Requestor</th>
-                      <th>Demand Leader</th>
-                      <th>Status</th>
-                      <th>Requested Date</th>
-                      <th>Target Date</th>
-                      <th>Comments</th>
-                      <th>View Demand</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <% demands.forEach( function ( demand ){ %>
-                      <tr>
-                        <td>
-                          <%= demand.demandName %>
-                        </td>
-                        <td>
-                          <%= demand.demandDescription %>
-                        </td>
-                        <td>
-                          <%= demand.demandCountry %>
-                        </td>
-                        <td>
-                          <%= demand.demandRequestor %>
-                        </td>
-                        <td>
-                          <%= demand.demandLeader %>
-                        </td>
-                        <td>
-                          <%= demand.demandStatus %>
-                        </td>
-                        <td>
-                          <%= moment(demand.demandRequestedDate ).format( 'YYYY/MM/DD')  %>
-                        </td>
-                        <td>
-                          <%= demand.demandTargetDate %>
-                        </td>
-                        <td>
-                          <%= demand.demandComments %>
-                        </td>
-                        <td>
-                          <a href="/demands/<%= demand._id %>" >View Demand</a>
-                        </td>
-                      </tr>
-                    <% }); %>
-                  </tbody>
-                </table>
+        <div class="container">
+          <!-- Outer Row -->
+          <div class="row justify-content-center">
+      
+            <div class="col-xl-10 col-lg-12 col-md-9">
+      
+              <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                  <!-- Nested Row within Card Body -->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="p-5">
+                        <form class="demand" method="POST">
+                          <div class="form-group">
+                            <label class="custom-label" for="demandName">Demand Name</label>
+                            <input type="text" class="form-control form-control-user" name="demandName"  value=<%= demandDetail.demandName%>>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandDescription">Demand Description</label>
+                            <textarea class="form-control form-control-user" name="demandDescription" rows="3"><%= demandDetail.demandDescription %></textarea> </textarea>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandCountry">Demand Country</label>
+                            <select name="demandCountry" class="form-control"> 
+                              <option <%=(demandDetail.demandCountry=='None') ? 'selected' : ''%> >None</option>
+                              <option <%=(demandDetail.demandCountry=='Australia') ? 'selected' : ''%>>Australia</option>
+                              <option <%=(demandDetail.demandCountry=='China') ? 'selected' : ''%>>China</option>
+                              <option <%=(demandDetail.demandCountry=='Hong Kong') ? 'selected' : ''%>>Hong Kong</option>
+                              <option <%=(demandDetail.demandCountry=='India') ? 'selected' : ''%>>India</option>
+                              <option <%=(demandDetail.demandCountry=='Japan') ? 'selected' : ''%>>Japan</option>
+                              <option <%=(demandDetail.demandCountry=='Korea') ? 'selected' : ''%>>Korea</option>
+                              <option <%=(demandDetail.demandCountry=='Taiwan') ? 'selected' : ''%>>Taiwan</option> 
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandRequestor">Demand Requestor</label>
+                            <input type="text" class="form-control form-control-user" name="demandRequestor" value=<%= demandDetail.demandRequestor %>>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandLeader">Demand Leader</label>
+                            <input type="text" class="form-control form-control-user" name="demandLeader" value=<%= demandDetail.demandLeader %>>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandStatus">Demand Status</label>
+                            <select name="demandStatus" class="form-control"> 
+                              <option <%=(demandDetail.demandStatus=='Open') ? 'selected' : ''%> >Open</option>
+                              <option <%=(demandDetail.demandStatus=='On-going') ? 'selected' : ''%>>On-going</option>
+                              <option <%=(demandDetail.demandStatus=='On-hond') ? 'selected' : ''%>>On-hold</option>
+                              <option <%=(demandDetail.demandStatus=='Qualified') ? 'selected' : ''%>>Qualified</option> 
+                              <option <%=(demandDetail.demandStatus=='Pending kick off') ? 'selected' : ''%>>Pending kick off</option>      
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandRequestedDate">Demand Requested Date</label>
+                            <input type="text" class="form-control form-control-user" name="demandRequestedDate" readonly="readonly" value=<%= moment(demandDetail.demandRequestedDate ).format( 'YYYY/MM/DD')  %> >
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandTargetDate">Demand Target Date</label>
+                            <input type="text" class="form-control form-control-user" name="demandTargetDate" placeholder="YYYY/MM/DD" value=<%= demandDetail.demandTargetDate %>>
+                          </div>
+                          <div class="form-group">
+                            <label class="custom-label" for="demandDescription">Comments</label>
+                            <textarea class="form-control form-control-user" name="demandComments" rows="5"><%= demandDetail.demandComments %></textarea> </textarea>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Update Demand">
+                          </div>
+                          
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+      
             </div>
+      
           </div>
-
+      
         </div>
-        <!-- /.container-fluid -->
-
-      </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+      
 
     </div>
     <!-- End of Content Wrapper -->
