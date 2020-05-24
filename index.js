@@ -27,12 +27,14 @@ app.set('view engine', 'ejs');
 const appRouter =  require('./src/routes/routes')();
 const demandRouter =  require('./src/routes/demandRoutes')();
 const adminRouter =  require('./src/routes/adminRoutes')();
- 
+const projectRouter =  require('./src/routes/projectRoutes')();
 
 
 app.use("/", appRouter);
 app.use("/demands", demandRouter);
 app.use("/admin", adminRouter);
+app.use("/project", projectRouter);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port,function(){
