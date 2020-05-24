@@ -22,6 +22,6 @@ exports.create = function (req, res) {
 // query db for all open demands
 exports.findProjects = function (req, res) {
     Project.find({}, function (err, projects, count) {
-        res.json(projects);
+        res.json({projects: projects});
     });
 };
